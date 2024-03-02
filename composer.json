@@ -3,7 +3,7 @@
     "description": "Aula de PHP",
     "autoload": {
         "psr-4": {
-            "Fateczonaleste\\Vek\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
