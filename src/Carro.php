@@ -24,6 +24,7 @@
             $estado = ($this->ligado == false) ? 'Ligando' : 'Desligando';
             echo '<br>' . $estado . ' Carro...';
             $this->ligado = !$this->ligado; 
+            $this->velocidade = 0;
         }
 
 
@@ -53,11 +54,16 @@
                 if(($vel + $this->velocidade) < ($this->marcha * 15)){
                     $this->velocidade += $vel;
                     echo '<br>Acelerando...';
-                    echo '<br>Velocidade atual: ' . $this->velocidade;
                 }else{
-                    echo '<br>A Marcha ' . $this->marcha . ' só suporta uma velocidade maxima de ' . ($this->marcha * 15);
+                    if($this->velocidade == ($this->marcha * 15)){
+                        echo '<br>Carro está morrendo...';
+                        $this->ignicao();
+                    }else{
+                        $this->velocidade = ($this->marcha * 15);
+                    echo '<br>A Marcha ' . $this->marcha . '° só suporta uma velocidade maxima de ' . ($this->marcha * 15);
+                    }
                 }
-                
+                echo '<br>Velocidade atual: ' . $this->velocidade;
             }else{
                 echo '<br>Carro está desligado...';
             }
