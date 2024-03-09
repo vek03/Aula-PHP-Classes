@@ -2,82 +2,18 @@
     namespace App\Models;
 
     class Carro{
-        private string $marca;
-        private string $modelo;
-        private int $ano = 1985;
-        private int $cilindros = 6;
-        private float $velocidade = 0;
-        private int $total_marchas = 5;
-        private int $marcha = 1;
-        private bool $ligado = false;
-
-
-        public function __construct(){
-            $this->ignicao();
-        }
+        protected string $marca;
+        protected string $modelo;
+        protected int $ano = 1985;
+        protected int $cilindros = 6;
+        protected float $velocidade = 0;
+        protected int $total_marchas = 5;
+        protected int $marcha = 1;
+        protected bool $ligado = false;
+        
 
         public function ficha_tecnica(){
             var_dump($this);
-        }
-        
-        public function ignicao(){
-            $estado = ($this->ligado == false) ? 'Ligando' : 'Desligando';
-            echo '<br>' . $estado . ' Carro...';
-            $this->ligado = !$this->ligado; 
-            $this->velocidade = 0;
-        }
-
-
-        public function embreagem($marcha){
-            if($this->ligado){
-                if($this->total_marchas < 5 || $this->total_marcha > 0){
-                    if($marcha != $this->marcha){
-                        $this->desacelerar(2);
-                        $this->marcha = $marcha; 
-                        $this->acelerar(4);
-                        echo '<br>Trocando Marcha...';
-                        echo '<br>Marcha Atual: ' . $this->marcha;
-                    }else{
-                        echo '<br>Marcha já engatada...';
-                    }
-                }else{
-                    echo '<br>Marcha inexistente...';
-                }
-            }else{
-                echo '<br>Carro está desligado...';
-            }
-        }
-
-
-        public function acelerar($vel){
-            if($this->ligado){
-                if(($vel + $this->velocidade) < ($this->marcha * 15)){
-                    $this->velocidade += $vel;
-                    echo '<br>Acelerando...';
-                }else{
-                    if($this->velocidade == ($this->marcha * 15)){
-                        echo '<br>Carro está morrendo...';
-                        $this->ignicao();
-                    }else{
-                        $this->velocidade = ($this->marcha * 15);
-                    echo '<br>A Marcha ' . $this->marcha . '° só suporta uma velocidade maxima de ' . ($this->marcha * 15);
-                    }
-                }
-                echo '<br>Velocidade atual: ' . $this->velocidade;
-            }else{
-                echo '<br>Carro está desligado...';
-            }
-        }
-
-        public function desacelerar($vel){
-            if(($this->velocidade - $vel) > 0){
-                $this->velocidade -= $vel;
-                echo '<br>Desacelerando...';
-                echo '<br>Velocidade atual: ' . $this->velocidade;
-            }else{
-                echo '<br>Não há como desacelerar essa kilometragem';
-            }
-            
         }
 
         public function brecar(){

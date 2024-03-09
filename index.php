@@ -25,18 +25,20 @@
             break;
 
         default:
-            echo 'Nenhum';
+            echo 'Nenhum verbo conhecido';
             break;
     }
 
-    
-
-    $opala = new Carro();
-    $corsa = new Eletrico();
-    $civic = new Combustao();
+    $opala = new Combustao(20);
+    $opala->abastecer(1);
+    $opala->ignicao();
+    //$civic = new Eletrico();
 
     $opala->acelerar(16);
+    $opala->embreagem(2);
+    $opala->acelerar(10);
     $opala->desacelerar(5);
     $opala->brecar();
     $opala->ignicao();
+    $opala->abastecer(10);
 ?>
